@@ -18,9 +18,17 @@ html, body {
 }
 
 .bg-layer {
-  background-size: 100% auto;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;         /* muestra todo el GIF */
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #000;           /* rellena si sobran márgenes */
+  object-fit: contain;              /* ayuda en navegadores modernos */
+  transition: opacity 0.8s ease;    /* mantiene tu fade bonito */
 }
 
 .container {
