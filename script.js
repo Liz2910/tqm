@@ -95,30 +95,42 @@ function typeText(element, text, callback) {
   typing();
 }
 
-function renderSlide(i){
+function renderSlide(i) {
   const s = slides[i];
 
+  // Transición suave entre fondos
   bgBase.style.opacity = 0;
-  setTimeout(()=>{
-    bgBase.style.backgroundImage = `url('${s.bg}')`;
-    bgBase.style.opacity = 1;
-  }, 300);
 
+  setTimeout(() => {
+    const newUrl = `url('${s.bg}')`;
+    bgBase.style.setProperty("--bg-image", newUrl);
+
+    // Color dominante automático
+    getDominantColor(s.bg).then(color => {
+      bgBase.style.setProperty("--bg-color", color);
+    });
+
+    bgBase.style.opacity = 1;
+  }, 400);
+
+  // Slide final
   if (s.special === "final") {
     card.className = "card final-card";
     card.innerHTML = `<h1 class="final-text">${s.title}</h1>`;
     return;
   }
 
+  // Primera slide
   if (s.special === "first") {
     card.className = "card first-card";
     title.textContent = s.title;
     text.textContent = "";
     actions.innerHTML = "";
-    actions.appendChild(createBtn("Comenzar", { next:true }));
+    actions.appendChild(createBtn("Comenzar", { next: true }));
     return;
   }
 
+  // Slides normales
   card.className = "card glass";
   title.textContent = s.title;
   actions.innerHTML = "";
@@ -131,6 +143,42 @@ function renderSlide(i){
 function nextSlide(){
   idx = Math.min(idx + 1, slides.length - 1);
   renderSlide(idx);
+}
+
+// Analiza el color dominante del GIF y devuelve un color RGB suave
+function getDominantColor(imageUrl) {
+  return new Promise(resolve => {
+    const img = document.createElement("img");
+    img.crossOrigin = "Anonymous";
+    img.src = imageUrl;
+
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+
+      const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+      let r = 0, g = 0, b = 0, count = 0;
+
+      for (let i = 0; i < data.length; i += 4 * 100) {
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
+        count++;
+      }
+
+      r = Math.floor(r / count);
+      g = Math.floor(g / count);
+      b = Math.floor(b / count);
+
+      const avgColor = `rgb(${r}, ${g}, ${b})`;
+      resolve(avgColor);
+    };
+
+    img.onerror = () => resolve("#000");
+  });
 }
 
 renderSlide(idx);
