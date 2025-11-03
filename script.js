@@ -1,5 +1,5 @@
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-async function typeText(el, text, speed = 28) {
+async function typeText(el, text, speed = 24) {
   el.innerHTML = "";
   for (let i = 0; i < text.length; i++) {
     el.innerHTML += text[i];
@@ -26,7 +26,7 @@ function createBtn(label, { href=null, next=false } = {}) {
 }
 
 const slides = [
-  { title: "Para Yir 💜", bg: "S1.jpg", text: "", buttons: [{ label:"Comenzar", next:true }] },
+  { title: "Para Yir 💜", bg: "S1.gif", text: "", buttons: [{ label:"Comenzar", next:true }] },
   { title: "¿Me regalas un poquito de tu tiempo?", bg: "S2.gif",
     text: "Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la cargaaa!",
     buttons: [{ label:"¡Vamos!", next:true }] },
@@ -54,8 +54,14 @@ const slides = [
   { title: "Te quiero tal como eres ♡", bg: "S9.gif",
     text: "Te quiero a ti: tus miedos, inseguridades, tus fuerzas y debilidades. Quiero tus sonrisas y tus lágrimas, tus carcajadas y tus silencios. Te quiero hasta que me lo permitas, y por toda la vida, aunque tomemos caminos distintos o sigamos siendo amigos. No me importa, porque siempre habrá algo de ti en mí, y eso es lo que importa.",
     buttons: [{ label:"Siguiente", next:true }] },
-  { title: "TE QUIERO MUUUUUUUUUUUUUUCHO 🐮💜", bg: "S10.gif", text: "", buttons: [] }
+  { title: "", bg: "S10.gif", text: "", buttons: [], final:true }
 ];
+
+if (s.final) {
+  card.innerHTML = `<h1 class="final-text">TE QUIERO MUUUUUUUUUUUUUUCHO 🐮💜</h1>`;
+  bgBase.style.backgroundImage = `url('${s.bg}')`;
+  return;
+}
 
 let idx = 0;
 
