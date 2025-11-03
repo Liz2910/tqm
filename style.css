@@ -1,0 +1,194 @@
+:root{
+  --bg-1: #0b0b10;          /* negro profundo */
+  --bg-2: #1a1a24;          /* gris oscuro */
+  --purple: #8b5cf6;        /* morado */
+  --purple-2: #a78bfa;
+  --silver: #cfd6e6;        /* plateado frío */
+  --white: #ffffff;
+  --muted: #a3acc2;
+  --glass: rgba(255,255,255,0.08);
+  --glass-stroke: rgba(255,255,255,0.18);
+  --shadow: 0 10px 35px rgba(0,0,0,0.35);
+  --radius: 22px;
+}
+
+*{ box-sizing:border-box; }
+html,body{
+  margin:0;
+  height:100%;
+  background: radial-gradient(1200px 800px at 70% 10%, rgba(167,139,250,0.15), transparent 60%),
+              radial-gradient(900px 700px at 20% 90%, rgba(207,214,230,0.10), transparent 60%),
+              linear-gradient(120deg, #0b0b10, #171720 55%, #101019);
+  color: var(--white);
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x:hidden;
+}
+
+.container{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding: clamp(16px, 3vw, 40px);
+}
+
+.bg-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity .6s ease, filter .6s ease, transform .6s ease;
+  z-index: 0;
+}
+#bg-base{
+  background:
+    radial-gradient(1300px 900px at 85% 10%, rgba(167,139,250,0.18), transparent 60%),
+    radial-gradient(1000px 800px at 10% 90%, rgba(207,214,230,0.12), transparent 60%),
+    linear-gradient(135deg, #0b0b10, #161622 52%, #101018);
+  opacity: 1;
+}
+#bg-effect{ opacity: 0; }
+
+.card{
+  position: relative;
+  z-index: 2;
+  width: min(900px, 92vw);
+  padding: clamp(22px, 3vw, 38px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-stroke);
+}
+
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+}
+
+.title{
+  margin: 0 0 10px 0;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: linear-gradient(90deg, var(--white), var(--silver));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 16px rgba(167,139,250,0.12);
+}
+
+.typing{
+  min-height: 110px; /* reserva espacio para evitar “saltos” */
+  line-height: 1.7;
+  color: var(--silver);
+  font-size: clamp(16px, 1.6vw, 18px);
+  margin: 8px 0 14px;
+  letter-spacing: .2px;
+  text-wrap: pretty;
+}
+
+.actions{
+  display:flex;
+  flex-wrap: wrap;
+  gap:12px;
+  margin-top: 6px;
+}
+
+.btn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.20);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06)),
+    linear-gradient(90deg, rgba(139,92,246,0.55), rgba(207,214,230,0.45));
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  cursor:pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .25s ease, border-color .25s ease;
+  box-shadow: 0 8px 22px rgba(139,92,246,0.28), inset 0 0 0 1px rgba(255,255,255,0.12);
+}
+.btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(139,92,246,0.35);
+}
+.btn:active{
+  transform: translateY(0px) scale(0.99);
+}
+.btn--ghost{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border-color: rgba(255,255,255,0.18);
+  color: var(--silver);
+}
+
+/* Partículas / emojis flotantes (corazones y trofeos) */
+#particles{
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.particle{
+  position: absolute;
+  font-size: clamp(18px, 2.8vw, 32px);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
+  animation: floatUp linear forwards;
+  opacity: 0.95;
+}
+@keyframes floatUp{
+  0%   { transform: translateY(20vh) translateX(0) scale(0.8); opacity: 0; }
+  8%   { opacity: 1; }
+  100% { transform: translateY(-120vh) translateX(var(--xShift, 0px)) scale(1.05); opacity: 0; }
+}
+
+/* Fondo “te quiero” repetido */
+.te-quiero{
+  position: absolute; inset:0;
+  display:grid; grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+  padding: clamp(12px, 2vw, 22px);
+  opacity: .1;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: 0.6px;
+  user-select: none;
+}
+.te-quiero span{
+  display:block;
+  text-align:center;
+  font-size: clamp(16px, 2.2vw, 24px);
+  text-transform: uppercase;
+}
+
+/* Fondo vaquita cute (SVG inline como patrón) */
+.cow-bg{
+  background-image:
+    radial-gradient(1200px 800px at 20% 10%, rgba(167,139,250,0.18), transparent 60%),
+    radial-gradient(900px 700px at 90% 80%, rgba(207,214,230,0.12), transparent 60%),
+    linear-gradient(145deg, #0e0e14, #15151e 50%, #0e0e15);
+}
+.cow-spots{
+  position:absolute; inset:0;
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'>\
+    <rect width='240' height='240' fill='transparent'/>\
+    <g fill='%23ffffff' fill-opacity='0.04'>\
+      <circle cx='40' cy='50' r='48'/>\
+      <circle cx='200' cy='70' r='36'/>\
+      <circle cx='130' cy='180' r='54'/>\
+      <circle cx='60' cy='190' r='24'/>\
+    </g>\
+    <g fill='%23000000' fill-opacity='0.18'>\
+      <ellipse cx='120' cy='110' rx='68' ry='44'/>\
+      <ellipse cx='30' cy='160' rx='32' ry='22'/>\
+      <ellipse cx='210' cy='160' rx='30' ry='20'/>\
+    </g>\
+  </svg>");
+  background-size: 220px 220px;
+  opacity: 0.9;
+  mix-blend-mode: overlay;
+}
+
+@media (max-width: 640px){
+  .te-quiero{ grid-template-columns: repeat(3, 1fr); }
+}
