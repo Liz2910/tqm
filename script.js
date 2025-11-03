@@ -29,7 +29,7 @@ function createBtn(label, { href=null, next=false } = {}) {
 const slides = [
   { title:"Para the best fcking person", bg:"S1.gif", text:"", buttons:[{ label:"Comenzar", next:true }] },
   { title:"¿Me regalas un poquito de tu tiempo?", bg:"S2.gif",
-    text:"Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la cargaaa!",
+    text:"Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la carga!!!!!",
     buttons:[{ label:"¡Vamos!", next:true }] },
   { title:"Para tu esfuerzo de cada día 🏆", bg:"S3.gif",
     text:"Primero que nada, quiero felicitarte por el esfuerzo que haces todos los días, sobre todo en esos días que son más difíciles. Eres valiente, fuerte y suficiente; jamás dudes de ti mismo y, si lo haces, que sea para aprender más y seguir adelante. Caerse y tropezar es algo normal en la vida: la cuestión es volver a levantarse. Cometer errores es humano; lo importante es qué haces con ese error y cómo mejoras a partir de él.",
