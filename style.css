@@ -27,6 +27,7 @@ html, body {
   transition: opacity 1s ease;
 }
 
+/* contenedor central */
 .container {
   min-height: 100vh;
   display: flex;
@@ -35,6 +36,7 @@ html, body {
   padding: 20px;
 }
 
+/* tarjeta base */
 .card {
   z-index: 2;
   width: min(900px, 90vw);
@@ -44,8 +46,8 @@ html, body {
     to bottom right,
     rgba(0,0,0,0.55),
     rgba(0,0,0,0.45)
-  ); /* negro translúcido */
-  border: 1px solid rgba(255,255,255,0.1);
+  );
+  border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
   display: flex;
@@ -54,7 +56,11 @@ html, body {
   justify-content: center;
   text-align: center;
   animation: fadeIn 1s ease;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+.card.fade-in { opacity: 1; }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.98); }
   to { opacity: 1; transform: scale(1); }
@@ -69,17 +75,19 @@ html, body {
   color: transparent;
   margin-bottom: 22px;
   text-shadow: 0 0 25px rgba(167,139,250,0.25);
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+.title.fade-in { opacity: 1; }
 
 .text-container {
   width: 100%;
   max-width: 750px;
-  min-height: 160px; /* antes 240px */
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.8s ease;
 }
-
 .typing {
   text-align: justify;
   color: var(--silver);
@@ -87,16 +95,19 @@ html, body {
   line-height: 1.7;
   letter-spacing: 0.2px;
   margin: 0 auto;
-  transition: opacity 0.6s ease;
 }
+.typing.fade-in { opacity: 1; }
 
 .actions {
-  margin-top: 16px; /* menos espacio */
+  margin-top: 16px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
+.actions.fade-in { opacity: 1; }
 
 .btn {
   border: none;
@@ -120,27 +131,34 @@ html, body {
 
 a.btn { text-decoration: none; }
 
-/* estilos generales del card */
-.card {
-  transition: all 0.5s ease;
-}
-
 /* primera slide */
 .first-card {
-  background: none;
-  box-shadow: none;
-  border: none;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.55)
+  );
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  color: var(--white);
 }
 .first-title {
   font-size: clamp(36px, 6vw, 70px);
   font-weight: 800;
-  text-shadow: 0 0 40px rgba(167,139,250,0.6);
+  line-height: 1.1;
+  background: linear-gradient(90deg, var(--white), var(--purple-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 40px rgba(167,139,250,0.5);
+  margin: 0 0 22px 0;
 }
-.first-card .actions {
-  margin-top: 30px;
-}
+.first-card .actions { margin-top: 8px; }
 
 /* última slide */
 .final-card {
@@ -160,10 +178,4 @@ a.btn { text-decoration: none; }
   color: transparent;
   text-shadow: 0 0 40px rgba(167,139,250,0.5);
   text-align: center;
-}
-
-
-#bg-base {
-  transition: opacity 0.8s ease;
-  background-color: #0b0b10;
 }
