@@ -79,13 +79,6 @@ html, body {
   margin: 0 auto;
   white-space: pre-line;
   overflow: hidden;
-  border-right: 3px solid var(--purple-light);
-  animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: var(--purple-light); }
 }
 
 .actions {
