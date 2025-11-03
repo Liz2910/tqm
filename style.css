@@ -120,17 +120,48 @@ html, body {
 
 a.btn { text-decoration: none; }
 
-/* último slide */
+/* estilos generales del card */
+.card {
+  transition: all 0.5s ease;
+}
+
+/* primera slide */
+.first-card {
+  background: none;
+  box-shadow: none;
+  border: none;
+  text-align: center;
+  color: var(--white);
+}
+.first-title {
+  font-size: clamp(36px, 6vw, 70px);
+  font-weight: 800;
+  text-shadow: 0 0 40px rgba(167,139,250,0.6);
+}
+.first-card .actions {
+  margin-top: 30px;
+}
+
+/* última slide */
+.final-card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 .final-text {
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(40px, 8vw, 100px);
   font-weight: 900;
   background: linear-gradient(90deg, var(--white), var(--purple-light));
   -webkit-background-clip: text;
   color: transparent;
+  text-shadow: 0 0 40px rgba(167,139,250,0.5);
   text-align: center;
-  margin: 0;
-  text-shadow: 0 0 40px rgba(167,139,250,0.4);
 }
+
 
 #bg-base {
   transition: opacity 0.8s ease;
