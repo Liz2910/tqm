@@ -4,7 +4,6 @@ const actions = document.getElementById("actions");
 const bgBase  = document.getElementById("bg-base");
 const card    = document.getElementById("card");
 
-// helper botón
 function createBtn(label, { href=null, next=false } = {}) {
   const el = href ? document.createElement("a") : document.createElement("button");
   el.className = "btn";
@@ -18,7 +17,6 @@ function createBtn(label, { href=null, next=false } = {}) {
   return el;
 }
 
-// slides con altura fija personalizada
 const slides = [
   { title:"Para Yir 💜", bg:"S1.gif", height:"220px", text:"", buttons:[{ label:"Comenzar", next:true }], special:"first" },
   { title:"¿Me regalas un poquito de tu tiempo?", bg:"S2.gif", height:"320px", text:"Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la cargaaa!", buttons:[{ label:"¡Vamos!", next:true }] },
@@ -34,61 +32,55 @@ const slides = [
 
 let idx = 0;
 
-function fadeInElements() {
-  card.classList.add("fade-in");
-  title.classList.add("fade-in");
-  text.classList.add("fade-in");
-  actions.classList.add("fade-in");
+// animación suave entre slides
+function fadeOutContent() {
+  card.style.opacity = 0;
 }
-
-function fadeOutElements() {
-  card.classList.remove("fade-in");
-  title.classList.remove("fade-in");
-  text.classList.remove("fade-in");
-  actions.classList.remove("fade-in");
+function fadeInContent() {
+  card.style.opacity = 1;
 }
 
 function renderSlide(i){
-  fadeOutElements();
+  const s = slides[i];
+  fadeOutContent();
 
+  // cambia fondo en fade
   setTimeout(() => {
-    const s = slides[i];
     bgBase.style.backgroundImage = `url('${s.bg}')`;
     bgBase.style.backgroundSize = "cover";
     bgBase.style.backgroundPosition = "center";
+  }, 200);
 
-    // Slide final
+  setTimeout(() => {
+    // slide final
     if (s.special === "final") {
-      card.className = "card final-card fade-in";
+      card.className = "card final-card";
       card.innerHTML = `<h1 class="final-text">${s.title}</h1>`;
+      fadeInContent();
       return;
     }
 
-    // Slide inicial
+    // slide inicial
     if (s.special === "first") {
-      card.className = "card first-card fade-in";
-      card.innerHTML = "";
-      const h = document.createElement("h1");
-      h.className = "first-title";
-      h.textContent = s.title;
-      card.appendChild(h);
-
-      const actionsDiv = document.createElement("div");
-      actionsDiv.className = "actions fade-in";
-      actionsDiv.appendChild(createBtn("Comenzar", { next: true }));
-      card.appendChild(actionsDiv);
+      card.className = "card first-card";
+      card.innerHTML = `
+        <h1 class="first-title">${s.title}</h1>
+        <div class="actions"></div>
+      `;
+      const act = card.querySelector(".actions");
+      act.appendChild(createBtn("Comenzar", { next: true }));
+      fadeInContent();
       return;
     }
 
-    // Slides normales
-    card.className = "card glass fade-in";
+    // normales
+    card.className = "card glass";
     title.textContent = s.title || "";
     text.innerHTML = s.text;
     text.style.height = s.height;
     actions.innerHTML = "";
     s.buttons.forEach(b => actions.appendChild(createBtn(b.label, b)));
-
-    fadeInElements();
+    fadeInContent();
   }, 400);
 }
 
