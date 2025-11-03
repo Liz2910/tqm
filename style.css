@@ -36,7 +36,17 @@ html, body {
   transition: opacity 0.8s ease, background-color 1s ease;
 }
 
-/* Capa difuminada (blur del mismo GIF) */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: opacity 0.8s ease;
+}
+
+/* Capa 1: blur extendido del mismo GIF */
 .bg-layer::before {
   content: "";
   position: absolute;
@@ -45,10 +55,21 @@ html, body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(45px) brightness(0.8) saturate(1.3);
-  transform: scale(1.2);
-  opacity: 0.85;
-  transition: background-image 0.8s ease, opacity 1s ease;
+  filter: blur(45px) brightness(0.8) saturate(1.2);
+  transform: scale(1.1);
+  opacity: 1;
+  z-index: -2;
+}
+
+/* Capa 2: GIF principal nítido centrado */
+.bg-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-image, none);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   z-index: -1;
 }
 
