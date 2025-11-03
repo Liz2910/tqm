@@ -74,7 +74,7 @@ html, body {
 .text-container {
   width: 100%;
   max-width: 750px;
-  height: 240px;
+  min-height: 160px; /* antes 240px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,4 +130,9 @@ a.btn { text-decoration: none; }
   text-align: center;
   margin: 0;
   text-shadow: 0 0 40px rgba(167,139,250,0.4);
+}
+
+#bg-base {
+  transition: opacity 0.8s ease;
+  background-color: #0b0b10;
 }
