@@ -1,32 +1,26 @@
 <!doctype html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Para Yir 💜</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Capas de fondo -->
   <div id="bg-base" class="bg-layer"></div>
   <div id="bg-effect" class="bg-layer"></div>
 
-  <!-- Contenido -->
   <main class="container">
     <section class="card glass" id="card">
-      <h1 id="title" class="title">💌</h1>
-      <p id="text" class="typing"></p>
-
-      <div id="actions" class="actions">
-        <!-- Botones se inyectan vía JS -->
+      <h1 id="title" class="title"></h1>
+      <div class="text-container">
+        <p id="text" class="typing"></p>
       </div>
+      <div id="actions" class="actions"></div>
     </section>
   </main>
-
-  <!-- Partículas / emojis flotantes -->
-  <div id="particles"></div>
 
   <script src="script.js"></script>
 </body>
