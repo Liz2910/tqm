@@ -1,9 +1,9 @@
 :root{
-  --bg-1: #0b0b10;          /* negro profundo */
-  --bg-2: #1a1a24;          /* gris oscuro */
-  --purple: #8b5cf6;        /* morado */
-  --purple-2: #a78bfa;
-  --silver: #cfd6e6;        /* plateado frío */
+  --bg-1: #0b0b10;
+  --bg-2: #1a1a24;
+  --purple: #8b5cf6;
+  --purple-light: #a78bfa;
+  --silver: #cfd6e6;
   --white: #ffffff;
   --muted: #a3acc2;
   --glass: rgba(255,255,255,0.08);
@@ -22,21 +22,20 @@ html,body{
   color: var(--white);
   font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   overflow-x:hidden;
+  text-align: center; /* centramos títulos y botones */
 }
 
-.container{
-  min-height:100dvh;
-  display:grid;
-  place-items:center;
-  padding: clamp(16px, 3vw, 40px);
-}
-
+/* === fondo dinámico === */
+/*  ⤵️ aquí podrás cambiar a imagen o gif */
 .bg-layer{
   position: fixed;
   inset: 0;
   pointer-events: none;
   transition: opacity .6s ease, filter .6s ease, transform .6s ease;
   z-index: 0;
+  /* Ejemplo: 
+  background: url('fondo.gif') center/cover no-repeat;
+  */
 }
 #bg-base{
   background:
@@ -47,6 +46,13 @@ html,body{
 }
 #bg-effect{ opacity: 0; }
 
+.container{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding: clamp(16px, 3vw, 40px);
+}
+
 .card{
   position: relative;
   z-index: 2;
@@ -56,17 +62,13 @@ html,body{
   box-shadow: var(--shadow);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-stroke);
-}
-
-.glass{
   background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
 }
 
 .title{
-  margin: 0 0 10px 0;
+  margin: 0 0 16px 0;
   font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 800;
-  letter-spacing: 0.3px;
   background: linear-gradient(90deg, var(--white), var(--silver));
   -webkit-background-clip: text;
   background-clip: text;
@@ -75,20 +77,23 @@ html,body{
 }
 
 .typing{
-  min-height: 110px; /* reserva espacio para evitar “saltos” */
+  min-height: 110px;
   line-height: 1.7;
   color: var(--silver);
   font-size: clamp(16px, 1.6vw, 18px);
-  margin: 8px 0 14px;
+  margin: 8px auto 14px;
   letter-spacing: .2px;
   text-wrap: pretty;
+  text-align: justify; /* texto justificado */
+  max-width: 720px;
 }
 
 .actions{
   display:flex;
   flex-wrap: wrap;
+  justify-content: center; /* centramos botones */
   gap:12px;
-  margin-top: 6px;
+  margin-top: 12px;
 }
 
 .btn{
@@ -98,29 +103,29 @@ html,body{
     linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06)),
     linear-gradient(90deg, rgba(139,92,246,0.55), rgba(207,214,230,0.45));
   color: var(--white);
-  padding: 12px 18px;
+  padding: 12px 22px;
   border-radius: 999px;
   font-weight: 700;
   letter-spacing: .3px;
   cursor:pointer;
-  transition: transform .18s ease, box-shadow .18s ease, background .25s ease, border-color .25s ease;
+  transition: all .25s ease;
   box-shadow: 0 8px 22px rgba(139,92,246,0.28), inset 0 0 0 1px rgba(255,255,255,0.12);
 }
 .btn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(139,92,246,0.35);
+  background: linear-gradient(90deg, var(--purple), var(--purple-light));
+  box-shadow: 0 0 20px var(--purple-light), 0 0 60px rgba(139,92,246,0.45);
+  transform: translateY(-3px) scale(1.04);
 }
 .btn:active{
   transform: translateY(0px) scale(0.99);
 }
 .btn--ghost{
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
   border-color: rgba(255,255,255,0.18);
   color: var(--silver);
 }
 
-/* Partículas / emojis flotantes (corazones y trofeos) */
+/* Partículas / emojis */
 #particles{
   pointer-events: none;
   position: fixed;
@@ -136,9 +141,9 @@ html,body{
   opacity: 0.95;
 }
 @keyframes floatUp{
-  0%   { transform: translateY(20vh) translateX(0) scale(0.8); opacity: 0; }
-  8%   { opacity: 1; }
-  100% { transform: translateY(-120vh) translateX(var(--xShift, 0px)) scale(1.05); opacity: 0; }
+  0%{ transform: translateY(20vh) scale(0.8); opacity: 0; }
+  8%{ opacity: 1; }
+  100%{ transform: translateY(-120vh) scale(1.05); opacity: 0; }
 }
 
 /* Fondo “te quiero” repetido */
@@ -160,8 +165,9 @@ html,body{
   text-transform: uppercase;
 }
 
-/* Fondo vaquita cute (SVG inline como patrón) */
+/* Fondo vaquita cute */
 .cow-bg{
+  /* ⤵️ puedes reemplazar este color por una imagen */
   background-image:
     radial-gradient(1200px 800px at 20% 10%, rgba(167,139,250,0.18), transparent 60%),
     radial-gradient(900px 700px at 90% 80%, rgba(207,214,230,0.12), transparent 60%),
