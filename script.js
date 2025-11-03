@@ -103,7 +103,7 @@ function renderSlide(i) {
 
   setTimeout(() => {
     const newUrl = `url('${s.bg}')`;
-    bgBase.style.setProperty("--bg-image", newUrl);
+    bgBase.style.setProperty("--bg-image", `url('${s.bg}')`);
 
     // Color dominante automático
     getDominantColor(s.bg).then(color => {
