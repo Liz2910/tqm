@@ -28,13 +28,13 @@ const slides = [
   {
     title:"Para tu esfuerzo de cada día 🏆",
     bg:"S3.gif",
-    text:"Primero que nada, quiero felicitarte por el esfuerzo que haces todos los días, por no rendirte incluso cuando todo se pone difícil. Sé que a veces el cansancio o el estrés pueden más, pero aún así, sigues dando lo mejor de ti, y eso es algo que admiro profundamente.",
+    text: "Primero que nada, quiero felicitarte por el esfuerzo que haces todos los días, sobre todo en esos días que son más difíciles. Eres valiente, fuerte y suficiente; jamás dudes de ti mismo y, si lo haces, que sea para aprender más y seguir adelante. Caerse y tropezar es algo normal en la vida: la cuestión es volver a levantarse. Cometer errores es humano; lo importante es qué haces con ese error y cómo mejoras a partir de él.",
     buttons:[{ label:"Siguiente", next:true }]
   },
   {
     title:"Te quiero en grande ✨",
     bg:"S4.gif",
-    text:"Abrázame fuerte, ven corriendo a mí. Te quiero, te quiero, te quiero. Te quiero porque simplemente existes, porque llenas de luz mis días, porque cuando pienso en ti sonrío sin querer hacerlo. Gracias por ser tú.",
+    text: "Abrázame fuerte, ven corriendo a mí. Te quiero, te quiero, te quiero, y no hago otra cosa que pensar en ti.",
     buttons:[
       { label:"Escucha la canción en Spotify 🎵", href:"https://open.spotify.com/search/Te%20quiero%20Hombres%20G" },
       { label:"Continuar", next:true }
@@ -43,31 +43,31 @@ const slides = [
   {
     title:"Cosas bonitas 🌙",
     bg:"S5.gif",
-    text:"En fin, ¿sabías que existen cosas muy bonitas que se deben apreciar? Como un cielo lleno de estrellas, el sonido del mar, una risa sincera… y tú. Porque tú también eres una de esas cosas que hacen que la vida sea más bonita.",
+    text: "En fin, ¿sabías que existen cosas muy bonitas que se deben apreciar? Como el cielo, las flores, la luna, los atardeceres y... ¡tú! Te quiero mucho, guapo. ¡Muaaa!",
     buttons:[{ label:"Siguiente", next:true }]
   },
   {
     title:"Gracias por existir en mi vida 🤍",
     bg:"S6.gif",
-    text:"¡Qué bonito es tenerte en mi vida! Gracias por compartir tus momentos, por escucharme, por apoyarme y por dejarme ser parte de tu mundo. No sabes cuánto valoro eso, y cuánto deseo verte brillar cada día más.",
+    text: "¡Qué bonito es tenerte en mi vida! Gracias por darme el privilegio de ser parte de ella, de abrirme las puertas de tu casa, de permitirme conocer a tu familia, de estar ahí para compartir tus logros y ver cómo creces profesionalmente. Mi corazón se llena de agradecimiento por tener un vínculo tan estrecho, y por poder compartir nuestras vidas, poco a poco y sin prisa :)",
     buttons:[{ label:"Continuar", next:true }]
   },
   {
     title:"Te dedico un poema 📜",
     bg:"S7.gif",
-    text:"Me gustaría que estuvieras acá conmigo, que leyeras esto a mi lado, y que vieras la sonrisa que se me escapa mientras lo escribo. Porque sí, es por ti. Cada palabra, cada pensamiento, cada cosa buena que me pasa… inevitablemente, me recuerda a ti.",
+    text: "Me gustaría que estuvieras acá conmigo, donde mi insomnio anhela tenerte y donde mi corazón grita que no quiere perderte.",
     buttons:[{ label:"Siguiente", next:true }]
   },
   {
-    title:"Siempre en mí 💭",
+    title:"Always on me 💭",
     bg:"S8.gif",
-    text:"Me gustaría que supieras que habrá un pedazo de ti en mí siempre. Que, pase lo que pase, siempre voy a recordarte con cariño, con gratitud y con una sonrisa. Porque dejaste algo bonito en mí, algo que no se borra.",
+    text: "Me gustaría que supieras que habrá un pedazo de ti en mí siempre, y estoy agradecida por eso. Sea cual sea la persona en la que te conviertas, y donde quiera que estés en el mundo, lejos o cerca de mí, te envío amor y cariño, y te los daré siempre que te tenga cerca.",
     buttons:[{ label:"Siguiente", next:true }]
   },
   {
     title:"Te quiero tal como eres ♡",
     bg:"S9.gif",
-    text:"Te quiero a ti: tus miedos, tus fuerzas y tus silencios. Te quiero incluso cuando no te entiendes, cuando dudas, cuando brillas y cuando te caes. Porque en cada versión tuya encuentro razones para seguir queriéndote.",
+    text: "Te quiero a ti: tus miedos, inseguridades, tus fuerzas y debilidades. Quiero tus sonrisas y tus lágrimas, tus carcajadas y tus silencios. Te quiero hasta que me lo permitas, y por toda la vida, aunque tomemos caminos distintos o sigamos siendo amigos. No me importa, porque siempre habrá algo de ti en mí, y eso es lo que importa.",
     buttons:[{ label:"Siguiente", next:true }]
   },
   {
