@@ -18,17 +18,17 @@ function createBtn(label, { href=null, next=false } = {}) {
 }
 
 const slides = [
-  { title:"Para Yir 💜", bg:"S1.gif", height:"220px", text:"", buttons:[{ label:"Comenzar", next:true }], special:"first" },
-  { title:"¿Me regalas un poquito de tu tiempo?", bg:"S2.gif", height:"320px", text:"Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la cargaaa!", buttons:[{ label:"¡Vamos!", next:true }] },
-  { title:"Para tu esfuerzo de cada día 🏆", bg:"S3.gif", height:"420px", text:"Primero que nada, quiero felicitarte por el esfuerzo que haces todos los días...", buttons:[{ label:"Siguiente", next:true }] },
-  { title:"Te quiero en grande ✨", bg:"S4.gif", height:"260px", text:"Abrázame fuerte, ven corriendo a mí. Te quiero, te quiero, te quiero...", buttons:[{ label:"Escucha la canción en Spotify :D", href:"https://open.spotify.com/search/Te%20quiero%20Hombres%20G" }, { label:"Continuar", next:true }] },
-  { title:"Cosas bonitas 🌙", bg:"S5.gif", height:"300px", text:"En fin, ¿sabías que existen cosas muy bonitas que se deben apreciar?...",
+  { title:"Para Yir 💜", bg:"S1.gif", text:"", buttons:[{ label:"Comenzar", next:true }], special:"first" },
+  { title:"¿Me regalas un poquito de tu tiempo?", bg:"S2.gif", text:"Hola Yir, ¿sabías que te quiero mucho? Bueno, si no lo sabías, ahora ya lo sabes. En fin, tú sabes que soy mala con las cartas, así que haré todo lo posible por expresar, aunque sea un poco, cuánto te quiero. Espero te guste, ¡a la cargaaa!", buttons:[{ label:"¡Vamos!", next:true }] },
+  { title:"Para tu esfuerzo de cada día 🏆", bg:"S3.gif", text:"Primero que nada, quiero felicitarte por el esfuerzo que haces todos los días...", buttons:[{ label:"Siguiente", next:true }] },
+  { title:"Te quiero en grande ✨", bg:"S4.gif", text:"Abrázame fuerte, ven corriendo a mí. Te quiero, te quiero, te quiero...", buttons:[{ label:"Escucha la canción en Spotify :D", href:"https://open.spotify.com/search/Te%20quiero%20Hombres%20G" }, { label:"Continuar", next:true }] },
+  { title:"Cosas bonitas 🌙", bg:"S5.gif", text:"En fin, ¿sabías que existen cosas muy bonitas que se deben apreciar?...",
     buttons:[{ label:"Siguiente", next:true }] },
-  { title:"Gracias por existir en mi vida 🤍", bg:"S6.gif", height:"440px", text:"¡Qué bonito es tenerte en mi vida!...", buttons:[{ label:"Continuar", next:true }] },
-  { title:"Te dedico un poema 📜", bg:"S7.gif", height:"260px", text:"Me gustaría que estuvieras acá conmigo...", buttons:[{ label:"Siguiente", next:true }] },
-  { title:"Siempre en mí 💭", bg:"S8.gif", height:"340px", text:"Me gustaría que supieras que habrá un pedazo de ti en mí siempre...", buttons:[{ label:"Siguiente", next:true }] },
-  { title:"Te quiero tal como eres ♡", bg:"S9.gif", height:"400px", text:"Te quiero a ti: tus miedos, tus fuerzas y tus silencios...", buttons:[{ label:"Siguiente", next:true }] },
-  { title:"TE QUIERO MUUUUUUUUUUUUUUCHO 🐮💜", bg:"S10.gif", height:"100vh", text:"", final:true, special:"final" }
+  { title:"Gracias por existir en mi vida 🤍", bg:"S6.gif", text:"¡Qué bonito es tenerte en mi vida!...", buttons:[{ label:"Continuar", next:true }] },
+  { title:"Te dedico un poema 📜", bg:"S7.gif", text:"Me gustaría que estuvieras acá conmigo...", buttons:[{ label:"Siguiente", next:true }] },
+  { title:"Siempre en mí 💭", bg:"S8.gif", text:"Me gustaría que supieras que habrá un pedazo de ti en mí siempre...", buttons:[{ label:"Siguiente", next:true }] },
+  { title:"Te quiero tal como eres ♡", bg:"S9.gif", text:"Te quiero a ti: tus miedos, tus fuerzas y tus silencios...", buttons:[{ label:"Siguiente", next:true }] },
+  { title:"TE QUIERO MUUUUUUUUUUUUUUCHO 🐮💜", bg:"S10.gif", text:"", final:true, special:"final" }
 ];
 
 let idx = 0;
@@ -36,13 +36,11 @@ let idx = 0;
 function renderSlide(i){
   const s = slides[i];
 
-  // fondo
-  bgBase.style.backgroundImage = `url('${s.bg}')`;
-  bgBase.style.backgroundSize  = "cover";
-  bgBase.style.backgroundPosition = "center";
-  bgBase.style.transition = "opacity 0.8s ease";
   bgBase.style.opacity = 0;
-  setTimeout(()=>{ bgBase.style.opacity = 1; },200);
+  setTimeout(()=>{
+    bgBase.style.backgroundImage = `url('${s.bg}')`;
+    bgBase.style.opacity = 1;
+  }, 300);
 
   // slide final
   if (s.special === "final") {
@@ -57,7 +55,8 @@ function renderSlide(i){
     title.textContent = s.title;
     text.innerHTML = "";
     actions.innerHTML = "";
-    actions.appendChild(createBtn("Comenzar", { next:true }));
+    const btn = createBtn("Comenzar", { next:true });
+    actions.appendChild(btn);
     return;
   }
 
@@ -65,8 +64,6 @@ function renderSlide(i){
   card.className = "card glass";
   title.textContent = s.title;
   text.innerHTML = s.text;
-  text.style.height = s.height;
-
   actions.innerHTML = "";
   s.buttons.forEach(b => actions.appendChild(createBtn(b.label, b)));
 }
