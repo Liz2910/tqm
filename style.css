@@ -1,200 +1,118 @@
-:root{
-  --bg-1: #0b0b10;
-  --bg-2: #1a1a24;
-  --purple: #8b5cf6;
-  --purple-light: #a78bfa;
-  --silver: #cfd6e6;
+:root {
+  --purple: #a78bfa;
+  --purple-light: #c4b5fd;
+  --silver: #e3e5eb;
   --white: #ffffff;
-  --muted: #a3acc2;
-  --glass: rgba(255,255,255,0.08);
-  --glass-stroke: rgba(255,255,255,0.18);
-  --shadow: 0 10px 35px rgba(0,0,0,0.35);
-  --radius: 22px;
+  --shadow: 0 10px 40px rgba(0,0,0,0.4);
+  --radius: 28px;
 }
 
-*{ box-sizing:border-box; }
-html,body{
-  margin:0;
-  height:100%;
-  background: radial-gradient(1200px 800px at 70% 10%, rgba(167,139,250,0.15), transparent 60%),
-              radial-gradient(900px 700px at 20% 90%, rgba(207,214,230,0.10), transparent 60%),
-              linear-gradient(120deg, #0b0b10, #171720 55%, #101019);
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
   color: var(--white);
-  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  overflow-x:hidden;
-  text-align: center; /* centramos títulos y botones */
+  background: #0b0b10;
+  overflow-x: hidden;
+  text-align: center;
 }
 
-/* === fondo dinámico === */
-/*  ⤵️ aquí podrás cambiar a imagen o gif */
-.bg-layer{
+.bg-layer {
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  transition: opacity .6s ease, filter .6s ease, transform .6s ease;
   z-index: 0;
-  /* Ejemplo: 
-  background: url('fondo.gif') center/cover no-repeat;
-  */
-}
-#bg-base{
-  background:
-    radial-gradient(1300px 900px at 85% 10%, rgba(167,139,250,0.18), transparent 60%),
-    radial-gradient(1000px 800px at 10% 90%, rgba(207,214,230,0.12), transparent 60%),
-    linear-gradient(135deg, #0b0b10, #161622 52%, #101018);
-  opacity: 1;
-}
-#bg-effect{ opacity: 0; }
-
-.container{
-  min-height:100dvh;
-  display:grid;
-  place-items:center;
-  padding: clamp(16px, 3vw, 40px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 1s ease;
 }
 
-.card{
-  position: relative;
+.container {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.card {
   z-index: 2;
-  width: min(900px, 92vw);
-  padding: clamp(22px, 3vw, 38px);
+  width: min(900px, 90vw);
+  padding: 38px;
   border-radius: var(--radius);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-stroke);
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-.title{
-  margin: 0 0 16px 0;
-  font-size: clamp(20px, 2.4vw, 28px);
+.title {
+  font-size: clamp(26px, 3.5vw, 34px);
   font-weight: 800;
-  background: linear-gradient(90deg, var(--white), var(--silver));
+  background: linear-gradient(90deg, var(--white), var(--purple-light));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 1px 16px rgba(167,139,250,0.12);
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(167,139,250,0.25);
 }
 
-.typing{
-  min-height: 110px;
-  line-height: 1.7;
-  color: var(--silver);
-  font-size: clamp(16px, 1.6vw, 18px);
-  margin: 8px auto 14px;
-  letter-spacing: .2px;
-  text-wrap: pretty;
-  text-align: justify; /* texto justificado */
-  max-width: 720px;
-}
-
-.actions{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center; /* centramos botones */
-  gap:12px;
-  margin-top: 12px;
-}
-
-.btn{
-  appearance: none;
-  border: 1px solid rgba(255,255,255,0.20);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06)),
-    linear-gradient(90deg, rgba(139,92,246,0.55), rgba(207,214,230,0.45));
-  color: var(--white);
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: .3px;
-  cursor:pointer;
-  transition: all .25s ease;
-  box-shadow: 0 8px 22px rgba(139,92,246,0.28), inset 0 0 0 1px rgba(255,255,255,0.12);
-}
-.btn:hover{
-  background: linear-gradient(90deg, var(--purple), var(--purple-light));
-  box-shadow: 0 0 20px var(--purple-light), 0 0 60px rgba(139,92,246,0.45);
-  transform: translateY(-3px) scale(1.04);
-}
-.btn:active{
-  transform: translateY(0px) scale(0.99);
-}
-.btn--ghost{
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border-color: rgba(255,255,255,0.18);
-  color: var(--silver);
-}
-
-/* Partículas / emojis */
-#particles{
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
+.text-container {
+  width: 100%;
+  max-width: 750px;
+  height: 240px; /* Fijo para evitar saltos */
   overflow: hidden;
 }
-.particle{
-  position: absolute;
-  font-size: clamp(18px, 2.8vw, 32px);
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.35));
-  animation: floatUp linear forwards;
-  opacity: 0.95;
-}
-@keyframes floatUp{
-  0%{ transform: translateY(20vh) scale(0.8); opacity: 0; }
-  8%{ opacity: 1; }
-  100%{ transform: translateY(-120vh) scale(1.05); opacity: 0; }
+
+.typing {
+  text-align: justify;
+  color: var(--silver);
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+  margin: 0 auto;
+  transition: opacity 0.6s ease;
 }
 
-/* Fondo “te quiero” repetido */
-.te-quiero{
-  position: absolute; inset:0;
-  display:grid; grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
-  padding: clamp(12px, 2vw, 22px);
-  opacity: .1;
-  font-weight: 800;
+.actions {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 16px 36px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
   color: var(--white);
-  letter-spacing: 0.6px;
-  user-select: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  font-size: 17px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(167,139,250,0.2);
 }
-.te-quiero span{
-  display:block;
-  text-align:center;
-  font-size: clamp(16px, 2.2vw, 24px);
-  text-transform: uppercase;
+.btn:hover {
+  background: linear-gradient(90deg, var(--purple), var(--purple-light));
+  transform: scale(1.08);
+  box-shadow: 0 0 25px var(--purple-light);
 }
+.btn:active { transform: scale(0.97); }
 
-/* Fondo vaquita cute */
-.cow-bg{
-  /* ⤵️ puedes reemplazar este color por una imagen */
-  background-image:
-    radial-gradient(1200px 800px at 20% 10%, rgba(167,139,250,0.18), transparent 60%),
-    radial-gradient(900px 700px at 90% 80%, rgba(207,214,230,0.12), transparent 60%),
-    linear-gradient(145deg, #0e0e14, #15151e 50%, #0e0e15);
-}
-.cow-spots{
-  position:absolute; inset:0;
-  background-image: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'>\
-    <rect width='240' height='240' fill='transparent'/>\
-    <g fill='%23ffffff' fill-opacity='0.04'>\
-      <circle cx='40' cy='50' r='48'/>\
-      <circle cx='200' cy='70' r='36'/>\
-      <circle cx='130' cy='180' r='54'/>\
-      <circle cx='60' cy='190' r='24'/>\
-    </g>\
-    <g fill='%23000000' fill-opacity='0.18'>\
-      <ellipse cx='120' cy='110' rx='68' ry='44'/>\
-      <ellipse cx='30' cy='160' rx='32' ry='22'/>\
-      <ellipse cx='210' cy='160' rx='30' ry='20'/>\
-    </g>\
-  </svg>");
-  background-size: 220px 220px;
-  opacity: 0.9;
-  mix-blend-mode: overlay;
-}
+a.btn { text-decoration: none; }
 
-@media (max-width: 640px){
-  .te-quiero{ grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) {
+  .text-container { height: 300px; }
+  .btn { padding: 14px 28px; font-size: 15px; }
 }
